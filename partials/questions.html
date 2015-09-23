@@ -1,8 +1,15 @@
 <div ng-show="questions.length" class="row">
   <h1>Here are all of the questions:</h1>
+
+  <h2>Search questions</h2>
+  <form class="form-inline" role="form">
+    <input ng-model="query.text" type="text" placeholder="Search">
+  </form>
+
+  <h2 ng-show="questions.length && !filtered.length">No Matches</h2>
   <ul>
-    <li ng-repeat="item in questions">
-      <a ui-sref="questions.answers({ questionId: item.id })">{{ item.text }}</a>
+    <li ng-repeat="item in filtered = (questions | filter:query )">
+      <a ui-sref="question({ questionId: item.id })">{{ item.text }}</a>
     </li>
   </ul>
 </div>
@@ -18,6 +25,3 @@
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
-
-
-<div ui-view></div>
