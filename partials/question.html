@@ -8,8 +8,8 @@
     <li ng-repeat="item in question.answers | orderBy: '-voteTotal'">
       <div class="row">
         <div class="col-md-1">
-        <a href="" ng-click="addUpvote(item)">Upvote!</a>{{ item.upvotes}}<br>
-        <a href="" ng-click="addDownvote(item)">Downvote!</a> {{item.downvotes}} <br>
+        <a href="" ng-click="addUpvote(item)"><i class="fa fa-arrow-up"></i></a>{{ item.upvotes}}<br>
+        <a href="" ng-click="addDownvote(item)"><i class="fa fa-arrow-down"></i></a> {{item.downvotes}} <br>
         <p>{{ item.voteTotal }}</p>
         </div>
         <div class="col-md-8">
