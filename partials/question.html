@@ -4,8 +4,19 @@
 
 <div ng-show="question.answers.length" class="row">
   <h2>Answers:</h2>
-  <ul>
-    <li ng-repeat="item in question.answers">{{ item.text }}</li>
+  <ul class="list-unstyled">
+    <li ng-repeat="item in question.answers | orderBy: '-voteTotal'">
+      <div class="row">
+        <div class="col-md-1">
+        <a href="" ng-click="addUpvote(item)">Upvote!</a>{{ item.upvotes}}<br>
+        <a href="" ng-click="addDownvote(item)">Downvote!</a> {{item.downvotes}} <br>
+        <p>{{ item.voteTotal }}</p>
+        </div>
+        <div class="col-md-8">
+          {{ item.text }}
+        </div>
+      </div>
+    </li>
   </ul>
 </div>
 
