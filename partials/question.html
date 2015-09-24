@@ -15,11 +15,11 @@
               <button class="btn btn-default" type="submit">Save</button>
             </form>
           </span>
+          <div class="panel panel-default">
+            <div class="panel-body">
           <ul>
             <li ng-repeat="comment in item.comments track by $index">{{ comment }}</li>
           </ul>
-          <div class="panel panel-default">
-            <div class="panel-body">
               <form ng-submit="addComment(item, commentText)" role="form">
                 <div class="form-group">
                   <textarea type="text" ng-model="commentText" class="form-control" rows="1" placeholder="Comment..."></textarea>
