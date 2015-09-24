@@ -5,7 +5,7 @@
   <div class="well">
   <ul class="list-unstyled">
     <li ng-repeat="item in question.answers | orderBy: '-voteTotal'">
-        <a href="" ng-click="addUpvote(item)"><i class="fa fa-arrow-up"></i></a> {{ item.upvotes }}     <a href="" ng-click="addDownvote(item)"><i class="fa fa-arrow-down"></i></a> {{item.downvotes}} <br>
+        <a href="" ng-click="addUpvote(item)"><i class="fa fa-arrow-up"></i></a> {{ item.upvotes }}<br> <a href="" ng-click="addDownvote(item)"><i class="fa fa-arrow-down"></i></a>-{{item.downvotes}} <br>
           <span ng-click="editing = true" ng-hide="editing">{{ item.text }}</span>
           <span class="form-group" ng-show="editing" ng-submit="editing = false">
             <form>
