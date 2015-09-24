@@ -20,7 +20,7 @@
           <ul>
             <li ng-repeat="comment in item.comments track by $index">{{ comment }}</li>
           </ul>
-              <form ng-submit="addComment(item, commentText)" role="form">
+              <form ng-submit="addComment(item, commentText); commentText = ''" role="form">
                 <div class="form-group">
                   <textarea type="text" ng-model="commentText" class="form-control" rows="1" placeholder="Comment..."></textarea>
                 </div>
