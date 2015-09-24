@@ -1,23 +1,16 @@
-<div class="row">
-  <h1>{{question.text}}</h1>
-</div>
+<h1>{{question.text}}</h1>
 
-<div ng-show="question.answers.length" class="row">
+<div ng-show="question.answers.length">
   <h2>Answers:</h2>
+  <div class="well">
   <ul class="list-unstyled">
     <li ng-repeat="item in question.answers | orderBy: '-voteTotal'">
-      <div class="row">
-        <div class="col-md-1">
-        <a href="" ng-click="addUpvote(item)"><i class="fa fa-arrow-up"></i></a> {{ item.upvotes }}<br>
-        <a href="" ng-click="addDownvote(item)"><i class="fa fa-arrow-down"></i></a> {{item.downvotes}} <br>
-        <p>{{ item.voteTotal }}</p>
-        </div>
-        <div class="col-md-8">
+        <a href="" ng-click="addUpvote(item)"><i class="fa fa-arrow-up"></i></a> {{ item.upvotes }}     <a href="" ng-click="addDownvote(item)"><i class="fa fa-arrow-down"></i></a> {{item.downvotes}} <br>
           <span ng-click="editing = true" ng-hide="editing">{{ item.text }}</span>
           <span class="form-group" ng-show="editing" ng-submit="editing = false">
             <form>
               <div class="form-group">
-                <textarea type="text" ng-model="item.text" class="large-text-area" placeholder="Write your answer here"></textarea>
+                <textarea type="text" ng-model="item.text" class="form-control" rows="3" placeholder="Write your answer here"></textarea>
               </div>
               <button class="btn btn-default" type="submit">Save</button>
             </form>
@@ -25,19 +18,22 @@
           <ul>
             <li ng-repeat="comment in item.comments track by $index">{{ comment }}</li>
           </ul>
-          <form ng-submit="addComment(item, commentText)" role="form">
-            <div class="form-group">
-              <textarea type="text" ng-model="commentText" class="form-control" placeholder="Comment..."></textarea>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form ng-submit="addComment(item, commentText)" role="form">
+                <div class="form-group">
+                  <textarea type="text" ng-model="commentText" class="form-control" rows="1" placeholder="Comment..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
         </div>
-      </div>
     </li>
   </ul>
 </div>
+</div>
 
-
+<div class="well">
   <h2>Add an answer:</h2>
   <form ng-submit="addAnswer()" role="form">
     <div class="form-group">
@@ -45,8 +41,10 @@
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
+</div>
 
-
-<div class="row">
-  <button ui-sref="questions" class="btn btn-default">Back</button>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <button ui-sref="questions" class="btn btn-yellow btn-block">Back</button>
+  </div>
 </div>

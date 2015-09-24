@@ -1,19 +1,32 @@
 <div ng-show="questions.length" class="row">
-  <h1>Here are all of the questions:</h1>
+  <div class="well">
+    <h1>Here are all of the questions:</h1>
 
-  <h2>Search questions</h2>
-  <form class="form-inline" role="form">
-    <input ng-model="query.text" type="text" placeholder="Search">
-  </form>
-
-  <h2 ng-show="questions.length && !filtered.length">No Matches</h2>
-  <ul>
-    <li ng-repeat="item in filtered = (questions | filter:query )" ng-hide="item.answers.length">
-      <a ui-sref="question({ questionId: item.id })">{{ item.text }}</a>
-    </li>
-  </ul>
+    <form class="form-inline" role="form">
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon" id="search"><i class="fa fa-search"></i></span>
+          <input ng-model="query.text" class="form-control" type="text" placeholder="Search">
+        </div>
+      </div>
+    </form>
+    <br>
+    <br>
+    <div class="panel panel-default" id="questions">
+      <div class="panel panel-body">
+      <h2 ng-show="questions.length && !filtered.length">No Matches</h2>
+      <ul class="list-unstyled">
+        <li ng-repeat="item in filtered = (questions | filter:query)" ng-hide="item.answers.length">
+          <h4><a ui-sref="question({ questionId: item.id })">{{ item.text }}</a></h4>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
 </div>
 
-<div class="row">
-  <button ui-sref="home" class="btn btn-default">Back</button>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <button ui-sref="home" class="btn btn-yellow btn-block">Back</button>
+  </div>
 </div>
