@@ -13,11 +13,19 @@
         <p>{{ item.voteTotal }}</p>
         </div>
         <div class="col-md-8">
-          {{ item.text }}
+          <span ng-click="editing = true" ng-hide="editing">{{ item.text }}</span>
+          <span class="form-group" ng-show="editing" ng-submit="editing = false">
+            <form>
+              <div class="form-group">
+                <textarea type="text" ng-model="item.text" class="large-text-area" placeholder="Write your answer here"></textarea>
+              </div>
+              <button class="btn btn-default" type="submit">Save</button>
+            </form>
+          </span>
           <ul>
-            <li ng-repeat="comment in item.comments">{{ comment.text }}</li>
+            <li ng-repeat="comment in item.comments track by $index">{{ comment }}</li>
           </ul>
-          <form ng-submit="addComment(item)" class="form-inline" role="form">
+          <form ng-submit="addComment(item, commentText)" class="form-inline" role="form">
             <div class="form-group">
               <textarea type="text" ng-model="commentText" class="large-text-area" placeholder="Comment..."></textarea>
             </div>

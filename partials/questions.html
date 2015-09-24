@@ -1,25 +1,15 @@
 <div ng-show="questions.length" class="row">
   <h1>Here are all of the questions:</h1>
-
+  <p>Key: <i class="fa fa-check-circle-o"></i> means it has been answered</p>
   <h2>Search questions</h2>
   <form class="form-inline" role="form">
     <input ng-model="query.text" type="text" placeholder="Search">
   </form>
   <h2 ng-show="questions.length && !filtered.length">No Matches</h2>
 
-  <h2>Here are the answered questions:</h2>
-  <h3 ng-show="questions.length && !filtered.length">No Matches</h3>
   <ul>
-    <li ng-repeat="item in filtered = (questions | filter:query )" ng-show="item.answers.length">
-      <a ui-sref="question({ questionId: item.id })">{{ item.text }}</a>
-    </li>
-  </ul>
-
-  <h2>Here are the unanswered questions:</h2>
-  <h3 ng-show="questions.length && !filtered.length">No Matches</h3>
-  <ul>
-    <li ng-repeat="item in filtered = (questions | filter:query )" ng-hide="item.answers.length">
-      <a ui-sref="question({ questionId: item.id })">{{ item.text }}</a>
+    <li ng-repeat="item in filtered = (questions | filter:query)">
+      <a ui-sref="question({ questionId: item.id })">{{ item.text }}</a> <i ng-show="item.answers.length" class="fa fa-check-circle-o"></i>
     </li>
   </ul>
 </div>
