@@ -1,31 +1,50 @@
-<div ng-show="questions.length" class="row">
-  <h1>Here are all of the questions:</h1>
-  <p>Key: <i class="fa fa-check-circle-o"></i> means it has been answered</p>
-  <h2>Search questions</h2>
-  <form class="form-inline" role="form">
-    <input ng-model="query.text" type="text" placeholder="Search">
-  </form>
-  <h2 ng-show="questions.length && !filtered.length">No Matches</h2>
+<div ng-show="questions.length">
+  <div class="well">
+    <h1>Here are all of the questions:</h1>
+    <p>Key: <i class="fa fa-check-circle-o"></i> means it has been answered</p>
 
-  <ul>
-    <li ng-repeat="item in filtered = (questions | filter:query)">
-      <a ui-sref="question({ questionId: item.id })">{{ item.text }}</a> <i ng-show="item.answers.length" class="fa fa-check-circle-o"></i>
-    </li>
-  </ul>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon" id="search"><i class="fa fa-search"></i></span>
+            <input ng-model="query.text" class="form-control" type="text" placeholder="Search">
+          </div>
+        </div>
+      </form>
+      <br>
+      <br>
+      <div class="panel panel-default" id="questions">
+        <div class="panel panel-body">
+        <h2 ng-show="questions.length && !filtered.length">No Matches</h2>
+        <ul class="list-unstyled">
+          <li ng-repeat="item in filtered = (questions | filter:query)">
+            <h4><a ui-sref="question({ questionId: item.id })">{{ item.text }}</a> <i ng-show="item.answers.length" class="fa fa-check-circle-o"></i></h4>
+          </li>
+        </ul>
+      </div>
+      </div>
+  </div>
 </div>
 
 
+<div class="well">
+    <h3>Add a new question:</h3>
+    <form ng-submit="QuestionsFactory.addQuestion()" role="form">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" ng-model="QuestionsFactory.questionText" class="form-control" placeholder="Write your question here:">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">Submit</button>
+          </span>
+        </div>
+      </div>
 
-<div class="row">
-  <h3>Add a new question:</h3>
-  <form ng-submit="QuestionsFactory.addQuestion()" class="form-inline" role="form">
-    <div class="form-group">
-      <input type="text" ng-model="QuestionsFactory.questionText" class="form-control input-xxlarge" placeholder="Write your answer here:">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
+    </form>
 </div>
 
-<div class="row">
-  <button ui-sref="home" class="btn btn-default">Back</button>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <button ui-sref="home" class="btn btn-yellow btn-block">Back</button>
+  </div>
 </div>

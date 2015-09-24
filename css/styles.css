@@ -2,8 +2,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1em;
 }
 
 .nav:hover {
   cursor: pointer;
+}
+
+.home {
+  text-align: center
+}
+
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-yellow {
+  background-color: yellow !important;
+}
+
+#search {
+  background-color: white !important;
+}
+
+#questions {
+  padding-top: 1em;
 }
