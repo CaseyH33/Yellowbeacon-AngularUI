@@ -1,0 +1,19 @@
+<div ng-show="questions.length" class="row">
+  <h1>Here are all of the questions:</h1>
+
+  <h2>Search questions</h2>
+  <form class="form-inline" role="form">
+    <input ng-model="query.text" type="text" placeholder="Search">
+  </form>
+
+  <h2 ng-show="questions.length && !filtered.length">No Matches</h2>
+  <ul>
+    <li ng-repeat="item in filtered = (questions | filter:query )" ng-hide="item.answers.length">
+      <a ui-sref="question({ questionId: item.id })">{{ item.text }}</a>
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <button ui-sref="home" class="btn btn-default">Back</button>
+</div>

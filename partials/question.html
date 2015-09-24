@@ -8,12 +8,21 @@
     <li ng-repeat="item in question.answers | orderBy: '-voteTotal'">
       <div class="row">
         <div class="col-md-1">
-        <a href="" ng-click="addUpvote(item)"><i class="fa fa-arrow-up"></i></a>{{ item.upvotes}}<br>
+        <a href="" ng-click="addUpvote(item)"><i class="fa fa-arrow-up"></i></a>{{ item.upvotes }}<br>
         <a href="" ng-click="addDownvote(item)"><i class="fa fa-arrow-down"></i></a> {{item.downvotes}} <br>
         <p>{{ item.voteTotal }}</p>
         </div>
         <div class="col-md-8">
           {{ item.text }}
+          <ul>
+            <li ng-repeat="comment in item.comments">{{ comment.text }}</li>
+          </ul>
+          <form ng-submit="addComment(item)" class="form-inline" role="form">
+            <div class="form-group">
+              <textarea type="text" ng-model="commentText" class="large-text-area" placeholder="Comment..."></textarea>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
         </div>
       </div>
     </li>
