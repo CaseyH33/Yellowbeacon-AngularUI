@@ -1,8 +1,9 @@
-.logo {
-  background-image: url("img/redbeacon_logo.jpg");
-  background-size: cover;
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.header {
-  height: 10%;
+.nav:hover {
+  cursor: pointer;
 }
